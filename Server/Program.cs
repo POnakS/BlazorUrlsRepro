@@ -2,7 +2,11 @@ using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// console logs are there just to demonstrate the issue
+Console.WriteLine(builder.WebHost.GetSetting("urls")); // http://localhost:5025 
 builder.WebHost.UseUrls("http://*:5025"); // this causes problem
+Console.WriteLine(builder.WebHost.GetSetting("urls")); // http://*:5025
+
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
